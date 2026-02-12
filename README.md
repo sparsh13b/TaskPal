@@ -62,7 +62,7 @@ Assign tasks, set priorities (Low, Medium, High), and track deadlines effortless
 1.  **Clone the repository**:
     ```bash
     git clone [your-repo-link]
-    cd task-management
+    cd TaskPal
     ```
 
 2.  **Setup Backend**:
@@ -89,4 +89,4 @@ TaskPal is an open-source project and contributions are welcome! If you're inter
 5.  Open a Pull Request.
 
 ---
-Built with ❤️ for productivity lovers everywhere.
+Built with ❤️.
