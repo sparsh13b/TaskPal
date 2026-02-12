@@ -286,7 +286,7 @@ export default function Landing() {
               Contributions are welcome <span style={{ color: "#ef4444" }}>❤️</span>
             </span>
             <a
-              href="https://github.com"
+              href="https://github.com/sparsh13b/TaskPal"
               target="_blank"
               rel="noopener noreferrer"
               style={{
