@@ -27,7 +27,7 @@ export default function Dashboard() {
     try {
       const res = await api.get("/dashboard/stats");
       setStats(res.data);
-    } catch (err) {
+    } catch {
       setError("Failed to load dashboard data");
     } finally {
       setLoading(false);
@@ -45,7 +45,7 @@ export default function Dashboard() {
       try {
         const res = await api.get("/users");
         setUsers(res.data.users || res.data);
-      } catch (err) {
+      } catch {
         console.error("Failed to load users");
       }
     };

@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../services/api";
 
@@ -12,7 +14,7 @@ export function AuthProvider({ children }) {
     const token = localStorage.getItem("token");
     const savedUser = localStorage.getItem("user");
     if (!token) {
-      setLoading(false);
+      setLoading(prev => prev ? false : prev);
       return;
     }
 

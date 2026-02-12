@@ -1,0 +1,10 @@
+
+> frontend@0.0.0 lint
+> eslint .
+
+
+C:\Users\91982\task-management\frontend\src\components\Navbar.jsx
+  45:6  warning  React Hook useEffect has missing dependencies: 'activeOrgName' and 'orgs.length'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 1 problem (0 errors, 1 warning)
+

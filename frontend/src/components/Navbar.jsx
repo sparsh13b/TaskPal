@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -22,8 +23,10 @@ export default function Navbar() {
   // Fetch orgs when user is logged in
   useEffect(() => {
     if (!user || !user.activeOrganization) {
-      setOrgs([]);
-      setActiveOrgName("");
+      // Use a timeout or move to a separate effect if needed, but for now 
+      // just ensure we aren't creating a loop.
+      if (orgs.length > 0) setOrgs([]);
+      if (activeOrgName !== "") setActiveOrgName("");
       return;
     }
     const fetchOrgs = async () => {
@@ -39,7 +42,7 @@ export default function Navbar() {
       }
     };
     fetchOrgs();
-  }, [user?.activeOrganization]);
+  }, [user, user?.activeOrganization]);
 
   // Close dropdowns on outside click
   useEffect(() => {

@@ -5,7 +5,7 @@ import { useTheme } from "../context/ThemeContext";
 import api from "../services/api";
 
 export default function OrgSetup() {
-    const { user, updateUser } = useAuth();
+    const { updateUser } = useAuth();
     const { theme } = useTheme();
     const navigate = useNavigate();
 
