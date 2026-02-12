@@ -1,0 +1,313 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Floating blob animations */
+@keyframes float1 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(60px, -50px) scale(1.1);
+    }
+
+    50% {
+        transform: translate(20px, 40px) scale(0.95);
+    }
+
+    75% {
+        transform: translate(-40px, -20px) scale(1.05);
+    }
+}
+
+@keyframes float2 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(-50px, 40px) scale(0.9);
+    }
+
+    50% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+
+    75% {
+        transform: translate(-20px, 50px) scale(0.95);
+    }
+}
+
+@keyframes float3 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(40px, 50px) scale(1.08);
+    }
+
+    50% {
+        transform: translate(-50px, -30px) scale(0.9);
+    }
+
+    75% {
+        transform: translate(30px, -40px) scale(1.05);
+    }
+}
+
+.blob-1 {
+    animation: float1 7s ease-in-out infinite;
+}
+
+.blob-2 {
+    animation: float2 9s ease-in-out infinite;
+}
+
+.blob-3 {
+    animation: float3 11s ease-in-out infinite;
+}
+
+/* Fade in up on load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.7s ease-out forwards;
+    opacity: 0;
+}
+
+.fade-in-up-delay-1 {
+    animation-delay: 0.1s;
+}
+
+.fade-in-up-delay-2 {
+    animation-delay: 0.2s;
+}
+
+.fade-in-up-delay-3 {
+    animation-delay: 0.35s;
+}
+
+.fade-in-up-delay-4 {
+    animation-delay: 0.5s;
+}
+
+/* Orbital animations */
+@keyframes orbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes counter-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.orbit-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    top: 50%;
+    left: 50%;
+}
+
+.orbit-ring-dark {
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+.orbit-1 {
+    width: 240px;
+    height: 240px;
+    margin-top: -120px;
+    margin-left: -120px;
+    animation: orbit 12s linear infinite;
+}
+
+.orbit-2 {
+    width: 360px;
+    height: 360px;
+    margin-top: -180px;
+    margin-left: -180px;
+    animation: orbit 18s linear infinite reverse;
+}
+
+.orbit-3 {
+    width: 480px;
+    height: 480px;
+    margin-top: -240px;
+    margin-left: -240px;
+    animation: orbit 25s linear infinite;
+}
+
+.orbit-4 {
+    width: 600px;
+    height: 600px;
+    margin-top: -300px;
+    margin-left: -300px;
+    animation: orbit 32s linear infinite reverse;
+}
+
+.orbit-icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -20px;
+    left: 50%;
+    margin-left: -20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Counter-rotate icons so they stay upright */
+.orbit-1 .orbit-icon {
+    animation: counter-rotate 12s linear infinite;
+}
+
+.orbit-2 .orbit-icon {
+    animation: counter-rotate 18s linear infinite reverse;
+}
+
+.orbit-3 .orbit-icon {
+    animation: counter-rotate 25s linear infinite;
+}
+
+.orbit-4 .orbit-icon {
+    animation: counter-rotate 32s linear infinite reverse;
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Tablet — ≤ 768px */
+@media (max-width: 768px) {
+
+    /* Landing feature cards: 4 → 2 cols */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Dashboard stat cards: 4 → 2 cols */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Dashboard pending + chart row: 3 → stack */
+    .pending-row {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Dashboard header: keep button below title on smaller screens */
+    .dash-header {
+        flex-direction: column !important;
+        gap: 16px;
+    }
+
+    .dash-header button {
+        position: static !important;
+    }
+
+    /* Orbital rings: scale down */
+    .orbit-1 {
+        width: 160px;
+        height: 160px;
+        margin-top: -80px;
+        margin-left: -80px;
+    }
+
+    .orbit-2 {
+        width: 260px;
+        height: 260px;
+        margin-top: -130px;
+        margin-left: -130px;
+    }
+
+    .orbit-3 {
+        width: 360px;
+        height: 360px;
+        margin-top: -180px;
+        margin-left: -180px;
+    }
+
+    .orbit-4 {
+        width: 460px;
+        height: 460px;
+        margin-top: -230px;
+        margin-left: -230px;
+    }
+
+    /* Navbar: smaller padding */
+    .navbar-inner {
+        padding: 0 16px !important;
+    }
+}
+
+/* Mobile — ≤ 480px */
+@media (max-width: 480px) {
+
+    /* Landing feature cards: 2 → 1 col */
+    .features-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Dashboard stat cards: 2 → 1 col */
+    .stats-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Orbital rings: hide on very small screens */
+    .orbit-ring {
+        display: none;
+    }
+
+    /* Hero heading smaller */
+    .hero-heading {
+        font-size: 28px !important;
+    }
+
+    .hero-sub {
+        font-size: 14px !important;
+    }
+}
