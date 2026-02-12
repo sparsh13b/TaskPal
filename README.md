@@ -30,7 +30,28 @@ Assign tasks, set priorities (Low, Medium, High), and track deadlines effortless
 *   **Testing**: Jest & Supertest (15+ integrated backend tests).
 *   **CI/CD**: Fully configured GitHub Actions pipeline for automated testing and linting.
 
-##  Getting Started
+## 📡 API Endpoints
+
+### Authentication
+*   `POST /api/auth/register` - Create a new user account.
+*   `POST /api/auth/login` - Authenticate user and return a JWT.
+
+### Organizations
+*   `GET /api/org/me` - List all organizations the user belongs to.
+*   `POST /api/org/create` - Create a new organization (user becomes admin).
+*   `POST /api/org/join` - Join an existing organization via invite code.
+*   `PATCH /api/org/switch` - Change the user's active organization context.
+
+### Tasks
+*   `GET /api/tasks` - Fetch tasks for the active organization (supports pagination and filters).
+*   `POST /api/tasks` - Create and assign a new task.
+*   `PATCH /api/tasks/:id` - Update task status or details.
+
+### Dashboard & Users
+*   `GET /api/dashboard/stats` - Retrieve productivity stats and task breakdowns.
+*   `GET /api/users` - List all verified users within the active organization.
+
+## Getting Started
 
 ### Prerequisites
 *   Node.js (v18 or higher)
