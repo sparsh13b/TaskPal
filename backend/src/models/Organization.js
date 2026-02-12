@@ -31,6 +31,5 @@ const organizationSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-organizationSchema.index({ inviteCode: 1 });
-
+// module exports
 module.exports = mongoose.model('Organization', organizationSchema);
