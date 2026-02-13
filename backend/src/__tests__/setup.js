@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 
+// Mock Resend globally for tests
+jest.mock('../config/resend', () => ({
+    emails: {
+        send: jest.fn().mockResolvedValue({ data: { id: 'test-id' }, error: null })
+    }
+}));
+
 if (!process.env.JWT_SECRET) process.env.JWT_SECRET = 'backend-test-secret-123';
 
 let mongoServer;
