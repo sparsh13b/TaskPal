@@ -48,8 +48,10 @@ app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/org', orgRoutes);
 
 // Health check
-app.get('/', (req, res) => {
-  res.send('backend is healthy along with mongodb');
+
+
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'active', message: 'Backend is healthy', timestamp: new Date() });
 });
 
 module.exports = app;
