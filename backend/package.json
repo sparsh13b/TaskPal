@@ -22,7 +22,8 @@
     "mongoose": "^9.1.5",
     "node-cron": "^4.2.1",
     "nodemailer": "^7.0.13",
-    "pg": "^8.17.2"
+    "pg": "^8.17.2",
+    "resend": "^6.9.2"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
