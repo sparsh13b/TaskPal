@@ -7,6 +7,9 @@ const rateLimit = require('express-rate-limit');
 // Initialize app
 const app = express();
 
+// Trust proxy for Render/Vercel (needed for rate limiting)
+app.set('trust proxy', 1);
+
 // Middleware
 app.use(cors());
 app.use(express.json());
