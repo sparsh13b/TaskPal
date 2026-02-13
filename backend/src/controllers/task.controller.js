@@ -36,7 +36,9 @@ exports.createTask = async (req, res) => {
             task: populatedTask,
             assignedBy: populatedTask.createdBy,
         }).catch(err => {
-            console.error('Email send failed:', err.message);
+            console.error('❌ Email Send Failed!');
+            console.error('Target Email:', populatedTask.assignedTo.email);
+            console.error('Error Details:', err.message);
         });
 
         res.status(201).json({
