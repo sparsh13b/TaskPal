@@ -38,12 +38,12 @@ exports.getDashboardStats = async (req, res) => {
         // Pending task lists with populated names
         const [pendingByMeList, pendingToMeList] = await Promise.all([
             Task.find({ ...byMe, status: 'pending' })
-                .populate('assignedTo', 'name email')
+                .populate('assignedTo', 'name')
                 .select('title priority dueDate assignedTo')
                 .sort({ dueDate: 1 })
                 .lean(),
             Task.find({ ...toMe, status: 'pending' })
-                .populate('createdBy', 'name email')
+                .populate('createdBy', 'name')
                 .select('title priority dueDate createdBy')
                 .sort({ dueDate: 1 })
                 .lean(),

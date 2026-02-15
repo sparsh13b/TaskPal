@@ -28,7 +28,7 @@ exports.createTask = async (req, res) => {
         });
 
         const populatedTask = await Task.findById(task._id)
-            .populate('assignedTo', 'name email')
+            .populate('assignedTo', 'name email') // Need email for the service call below
             .populate('createdBy', 'name email');
 
         sendEmail({
@@ -37,13 +37,17 @@ exports.createTask = async (req, res) => {
             assignedBy: populatedTask.createdBy,
         }).catch(err => {
             console.error('❌ Email Send Failed!');
-            console.error('Target Email:', populatedTask.assignedTo.email);
             console.error('Error Details:', err.message);
         });
 
+        // Create a sanitised version for the response
+        const sanitisedTask = populatedTask.toObject();
+        if (sanitisedTask.assignedTo) delete sanitisedTask.assignedTo.email;
+        if (sanitisedTask.createdBy) delete sanitisedTask.createdBy.email;
+
         res.status(201).json({
             message: 'Task created successfully',
-            task: populatedTask
+            task: sanitisedTask
         });
     } catch (error) {
         res.status(500).json({ message: 'Server error', error: error.message });
@@ -66,8 +70,8 @@ exports.getTasks = async (req, res) => {
 
         const [tasks, total] = await Promise.all([
             Task.find(filter)
-                .populate('assignedTo', 'name email')
-                .populate('createdBy', 'name email')
+                .populate('assignedTo', 'name')
+                .populate('createdBy', 'name')
                 .sort({ dueDate: 1 })
                 .skip(skip)
                 .limit(limit),

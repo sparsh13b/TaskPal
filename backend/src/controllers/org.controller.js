@@ -78,7 +78,7 @@ exports.joinOrg = async (req, res) => {
         });
 
         const populatedOrg = await Organization.findById(org._id)
-            .populate('members', 'name email');
+            .populate('members', 'name');
         const user = await User.findById(userId).select('-password');
 
         res.json({
@@ -145,7 +145,7 @@ exports.getMyOrgs = async (req, res) => {
         }
 
         const orgs = await Organization.find({ _id: { $in: user.organizations } })
-            .populate('admin', 'name email')
+            .populate('admin', 'name')
             .select('name inviteCode admin members createdAt');
 
         res.json({
