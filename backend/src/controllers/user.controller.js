@@ -6,15 +6,18 @@ exports.getUsers = async (req, res) => {
         const limit = parseInt(req.query.limit) || 50;
         const skip = (page - 1) * limit;
 
-        // Only return users in the same organization
+        // Strictly enforce organization filtering
         const filter = {};
         if (req.user.activeOrganization) {
             filter.organizations = req.user.activeOrganization;
+        } else {
+            // If no organization is selected, return nothing to prevent global leaks
+            return res.json({ users: [], total: 0, page, pages: 0 });
         }
 
         const [users, total] = await Promise.all([
             User.find(filter)
-                .select('_id name email')
+                .select('_id name') // STRIP EMAIL: Only return name for UI selection
                 .sort({ name: 1 })
                 .skip(skip)
                 .limit(limit),

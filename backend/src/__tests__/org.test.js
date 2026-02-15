@@ -87,6 +87,6 @@ describe('Organization Endpoints', () => {
 
         expect(resA.status).toBe(200);
         expect(resA.body.users).toHaveLength(1);
-        expect(resA.body.users[0].email).toBe('a@test.com');
+        expect(resA.body.users[0].name).toBe('Admin A');
     });
 });

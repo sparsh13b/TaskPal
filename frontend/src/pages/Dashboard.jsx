@@ -318,7 +318,7 @@ export default function Dashboard() {
                   >
                     <option value="">Select a user...</option>
                     {users.filter((u) => u._id !== currentUser?.id).map((u) => (
-                      <option key={u._id} value={u._id}>{u.name} ({u.email})</option>
+                      <option key={u._id} value={u._id}>{u.name}</option>
                     ))}
                   </select>
                 </div>
